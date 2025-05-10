@@ -1,3 +1,8 @@
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).parent.parent))
+
 from utils.game import Action, State, Params, Game, Agent, Nums_Data
 from utils.plot import plot_mse, plot_mse_group, plot_v
 from tqdm import tqdm
@@ -37,6 +42,8 @@ def linear_approximation(data: Nums_Data, params:Params, q_star=None):
             s_prime = copy.copy(s)
             a_prime:Action = copy.copy(a)
             s_prime, r, terminated = game.step(s, a)
+
+            
             x = feature_vector_pos(s=s, a=a, dealer_cubio=dealer_cubio, player_cubio=player_cubio)
             if not terminated:
                 # Q: q在这个时候只是一个值要怎么进行贪心策略的更新呢？

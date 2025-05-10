@@ -1,3 +1,8 @@
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).parent.parent))
+
 from utils.game import Action, State, Params, Game, Agent, Nums_Data
 from utils.plot import plot_mse, plot_mse_group, plot_v
 from tqdm import tqdm

@@ -1,3 +1,8 @@
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).parent.parent))
+
 from utils.game import Action, State, Params, Game, Agent, Nums_Data
 from utils.plot import plot_mse, plot_mse_group, plot_v
 from utils.compute_fn import compute_MSE
@@ -48,7 +53,7 @@ def sarsa(data: Nums_Data, params:Params, q_star=None):
 if __name__ == '__main__':
     # params = Params(lambda_value=1, gamma_value=1, alpha_value=0.03)
     data = Nums_Data(dealer_max_nums=10, agent_max_nums=21, episodes=10)
-    q_star = np.load("q_star.npy")
+    q_star = np.load("tabular_method\q_star.npy")
     _lambda = np.arange(0, 1.0, 0.1)
     t_mse = []
     for l in _lambda:
