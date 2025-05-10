@@ -2,6 +2,7 @@ import torch
 import torch.nn.functional as F
 from tqdm import tqdm
 import matplotlib.pyplot as plt
+import wandb
 
 import sys
 from pathlib import Path
@@ -67,6 +68,7 @@ if __name__ == '__main__':
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     player = agent(input_size, hidden_size, output_size, device, learning_rate, gamma)
+    wandb.init(project="<>", entity="<>")
 
     iteration_num = 4
     episode_num = 1000
@@ -110,3 +112,9 @@ if __name__ == '__main__':
                         '%.3f' % np.mean(return_list[-10:])
                     })
                 pbar.update(1)
+                wandb.log({
+                    'iteration': i,
+                    'episode': episode_num / 10 * i + e + 1,
+                    'episode_return': episode_return,
+                    'avg_return': np.mean(return_list[-10:])
+                })
