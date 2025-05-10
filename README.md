@@ -14,8 +14,11 @@ If you encounter difficulties while trying to complete its assignments, you can 
 如果你想要实现大作业Easy21却觉得无从下手，或是觉得别人的代码缺少解释，可以参考我的实现:D
 
 File construct:
+
 ├─policy_gradient
+
 ├─tabular_method
+
 └─utils
 
 在policy_gradient中，有一个简单的linear_approximation实现，与一个REINFORCE算法的实现
